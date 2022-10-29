@@ -7,7 +7,7 @@ const Header = ({ username, avatarSrc }) => {
             <div className="flex items-center">
                 <Link to={`/${username}`} className="flex items-center">
                     <img
-                        className="rounded-full border-red-500 border-2 h-8 w-8 flex mr-3"
+                        className="rounded-full border-green-600 border-2 h-8 w-8 flex mr-3"
                         src={avatarSrc}
                         alt={`${username}`}
                     />
