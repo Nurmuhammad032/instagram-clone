@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import FirebaseContext from "./../../context/firebase";
 import "./style.css";
 import { HOME, SIGN_UP, FORGOTPASSWORD } from "./../../constants/routes";
+import Sidebar from "./Sidebar";
 
 const Login = () => {
   const { firebase } = useContext(FirebaseContext);
@@ -32,48 +33,34 @@ const Login = () => {
   }, []);
 
   return (
-    <div className="h-screen w-screen flex flex-wrap items-center justify-center p-3">
-      <div className="flex space-x-5 items-center">
-        <div>
-          <img
-            src="/images/homebg.jpg"
-            alt="home bg"
-            className="max-w-[25rem] w-full"
-          />
-        </div>
-        <div className="flex flex-col">
-          <div className="border-[1px] bg-white p-4 mb-5 w-80">
-            <div className="w-full mb-5">
-              <img
-                src="/images/instatext.png"
-                alt="instalogo"
-                className="max-w-[9rem] block mx-auto"
-              />
-            </div>
-            <p className="text-center font-bold capitalize text-lg text-slate-800">
-              Log In To and follow friends.
-            </p>
-
+    <div className="h-screen w-screen flex">
+      <div className="w-1/2 h-full">
+        <Sidebar />
+      </div>
+      <div className="w-1/2 h-full bg-[#f7f7f7]">
+        <div className="flex flex-col h-full items-center justify-center">
+          <h1 className="text-4xl font-semibold text-[#666666] mb-5 text-center">
+            Sign in to see photos <br /> and videos from your friends.
+          </h1>
+          <div className="mb-5 w-80">
             {error && <p className="mb-4 text-xs text-red-500">{error}</p>}
             <form onSubmit={handleSubmit} className="mt-3" method="post">
               <div>
-                <span className="mb-1 block">Email ccount</span>
                 <input
                   type="text"
                   aria-label="Your email address"
                   placeholder="Your email account"
-                  className="text-xs p-3 mb-3 border-[1px] border-gray-400 outline-none rounded bg-white w-full border-black"
+                  className="text-sm p-3 mb-3 border-none rounded-full placeholder:text-[#a0a0a0] bg-[#dddddd] w-full border-black outline-none"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div>
-                <span className="mb-1 block">Password</span>
                 <input
                   type="password"
                   aria-label="Your password"
                   placeholder="Password"
-                  className="text-xs p-3 mb-3 border-[1px] border-gray-400 outline-none rounded bg-white w-full border-black"
+                  className="text-sm p-3 mb-3 border-none rounded-full placeholder:text-[#a0a0a0] bg-[#dddddd] w-full border-black outline-none"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
@@ -82,9 +69,7 @@ const Login = () => {
                 <button
                   disabled={isInvalid}
                   type="submit"
-                  className={`bg-blue-500  mt-3 cursor-pointer text-white rounded-2xl w-full h-8 font-bold ${
-                    isInvalid && "opacity-50"
-                  }`}
+                  className="cursor-pointer text-white rounded-full w-full h-10 register-btn"
                 >
                   Log In
                 </button>
@@ -92,22 +77,20 @@ const Login = () => {
               <div className="text-center mt-3 ">
                 <Link
                   to={FORGOTPASSWORD}
-                  className="text-blue-500 text-center w-full text-x font-thin my-3"
+                  className="text-blue-500 text-center w-full my-3"
                 >
                   Forgot password?
                 </Link>
               </div>
             </form>
           </div>
-          <div className="border-[1px]">
-            <div className="flex justify-center items-center flex-col w-full bg-white p-4">
-              <p className="text-sm">
-                Don't have an account?
-                <Link to={SIGN_UP} className="font-semibold ml-2 text-blue-500">
-                  Sign up
-                </Link>
-              </p>
-            </div>
+          <div className="flex justify-center items-center flex-col w-full">
+            <p className="text-sm text-[#8f8f8f]">
+              Don't have an account?
+              <Link to={SIGN_UP} className="ml-2 text-blue-500">
+                Sign up
+              </Link>
+            </p>
           </div>
         </div>
       </div>

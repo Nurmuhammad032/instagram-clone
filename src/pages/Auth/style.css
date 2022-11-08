@@ -1,17 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cookie&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 .instagram-font {
-    font-family: Cookie, cursive;
+  font-family: Cookie, cursive;
 }
 
 .bg-blue-inst {
-    background: #005c98;
+  background: #005c98;
 }
 
 .text-blue-inst {
-    color: #005c98;
+  color: #005c98;
+}
+
+.register-btn {
+  background: linear-gradient(95deg, blue, #ba2c95, orange);
+  background-size: 200% auto;
+  transition: all linear 0.2s;
+}
+
+.register-btn:hover {
+  background-position: right center;
 }

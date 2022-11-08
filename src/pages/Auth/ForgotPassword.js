@@ -13,7 +13,7 @@ const ForgotPassword = () => {
     const auth = getAuth();
     sendPasswordResetEmail(auth, email)
       .then(() => {
-        alert("Password reset email sent!");
+        console.log("Password reset email sent!");
       })
       .catch((error) => {
         setError(`${error.code} ${error.message}`);
@@ -27,31 +27,37 @@ const ForgotPassword = () => {
   }, []);
 
   return (
-    <div className="h-screen w-screen flex flex-wrap items-center justify-center p-3">
+    <div
+      className="h-screen w-screen flex flex-wrap items-center justify-center p-3"
+      style={{
+        background: "linear-gradient(120deg, blue, #ba2c95, orange)",
+      }}
+    >
       <div className="flex flex-col">
-        <div className="border-[1px] bg-white p-4 w-80 p-3 border-gray-400">
+        <div
+          className="border-[1px] rounded-2xl shadow-lg p-8 w-[30rem] p-3 border-gray-400"
+          style={{
+            backdropFilter: "blur(10rem)",
+          }}
+        >
           <div className="w-full">
             <img
-              src="/images/instatext.png"
-              className="mt-2 max-w-[8rem] mx-auto my-2"
+              src="/images/instalogo2.png"
+              className="mt-2 max-w-[12rem] mx-auto my-2"
               alt="instagram"
             />
           </div>
-          <p className="text-center font-bold  text-lg text-slate-800">
-            Update password
+          <p className="text-center text-white my-4 tracking-wide">
+            Reset password
           </p>
-          <div className="flex items-center my-3 w-full">
-            <div className="border-b-[1px] border-black h-0 w-full"></div>
-          </div>
           {error && <p className="mb-4 text-xs text-red-500">{error}</p>}
           <form onSubmit={handleSubmit} className="" method="post">
             <div>
-              <span className="mb-2 block">Email</span>
               <input
                 type="text"
                 aria-label="Enter your email address"
                 placeholder="Enter Your Email"
-                className="text-xs p-3 mb-3 outline-none border-[1px] rounded bg-white w-full border-black"
+                className="text-sm p-3 mb-3 outline-none border-none rounded-full bg-white w-full"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -60,7 +66,7 @@ const ForgotPassword = () => {
               <button
                 disabled={isInvalid}
                 type="submit"
-                className={`bg-blue-500  mt-4 cursor-pointer text-white rounded-2xl w-full h-8 font-bold ${
+                className={`bg-blue-500  mt-4 cursor-pointer text-white rounded-2xl w-full h-10 font-bold ${
                   isInvalid && "opacity-50"
                 }`}
               >
@@ -68,13 +74,13 @@ const ForgotPassword = () => {
               </button>
             </div>
           </form>
-        </div>
-        <div className="flex bg-[#FAFAFA] justify-center items-center flex-col border-t-0 w-full bg-white p-4 border-[1px] border-gray-400">
-          <p className="text-sm">
-            <Link to={LOGIN} className="font-semibold text-black">
-              Back to Login
-            </Link>
-          </p>
+          <div className="flex mt-5 justify-center items-center">
+            <p className="text-sm text-white tracking-wide">
+              <Link to={LOGIN} className="font-semibold">
+                Return to login
+              </Link>
+            </p>
+          </div>
         </div>
       </div>
     </div>

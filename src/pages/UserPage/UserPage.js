@@ -3,8 +3,7 @@ import { useParams } from "react-router-dom";
 import { getUserByUsername } from './../../services/firebase';
 import { useNavigate } from 'react-router-dom';
 import { NOT_FOUND } from './../../constants/routes';
-import Header from './../../components/profile/Header';
-import UserProfile from './../../components/profile/UserProfile';
+import UserProfile from './../../components/OwnUser/UserProfile';
 
 const UserPage = () => {
     const { username } = useParams();
